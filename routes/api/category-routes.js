@@ -7,11 +7,11 @@ const { Category, Product } = require('../../models');
 // be sure to include its associated Products
 router.get('/', async (req, res) => {
   try {
-    const productData = await Category.findAll({
+    const categorytData = await Category.findAll({
       include: [{ model: Product, required: false }]
     });
 
-    res.status(200).json(productData);
+    res.status(200).json(categoryData);
   } 
     catch (err) {
       res.status(500).json(err);
@@ -79,7 +79,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No product found with this id!' });
+      res.status(404).json({ message: 'No category found with this id!' });
       return;
     }
 
